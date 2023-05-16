@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Services;
 
@@ -13,6 +14,10 @@ class ServiceResponse
      */
     protected mixed $result;
 
+    /**
+     * @param $result
+     * @param array $serviceErrors
+     */
     public function __construct($result, array $serviceErrors = [])
     {
         $this->result = $result;

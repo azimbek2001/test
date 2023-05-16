@@ -1,13 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\DTO;
 
-abstract class BaseDTO
+abstract class BaseDto
 {
     /**
      * @param array $attributes
      */
-    public function __construct(array $attributes = [])
+    public final function __construct(array $attributes = [])
     {
         foreach ($attributes as $key => $value) {
             if (property_exists($this, $key)) {
@@ -19,7 +20,7 @@ abstract class BaseDTO
     /**
      * @return array
      */
-    public function toArray(): array
+    public final function toArray(): array
     {
         $properties = get_object_vars($this);
         $data = [];
@@ -39,7 +40,7 @@ abstract class BaseDTO
      * @param array $data
      * @return self
      */
-    public static function fromArray(array $data): self
+    public final static function fromArray(array $data): self
     {
         return new static($data);
     }
